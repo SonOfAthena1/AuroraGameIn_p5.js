@@ -18,3 +18,41 @@ function EXIT(){
 		titleScreen=0
 	}
 }
+
+
+function howToPlay(){
+	background(0);//colors background, in grayscale 0-255
+		fill(0)
+		stroke(250)
+		rect(width/2,height/2,width,height) //BACKGROUND
+		
+		textAlign(CENTER)
+		stroke('rgb(255,178,0)')
+		strokeWeight(0.5)
+		fill('rgb(255,178,0)')
+		textSize(20)
+		text("THERE IS AN EVIL ORGANIZATION TRYING TO ABSORB THE SOLAR WIND FROM THE SUN, BUT THIS WILL DESTROY THE AURORA!",350,150,600)
+		text("YOU ARE A LOCAL INUIT AND YOUR JOB IS TO PROTECT THE AURORA. USING A DOG SLED AND YOUR BOW, YOU HAVE TO CHASE DOWN THE BADGUYS ON SNOWMOBILES",350,250,600)
+		text("USE THE ARROW KEYS TO MOVE AROUND, AND SPACE BAR TO FIRE YOUR BOW. ELIMINATE ALL THE ENEMIES TO WIN. BE CAREFUL, THE ENEMIES SHOOT BACK, AND IF YOU RUN OUT OF DOGS, YOU DIE",350,350,600)
+		
+		noFill()
+		stroke(250)
+		strokeWeight(2)
+		rect(200,550,250,50)
+		fill(250)
+		triangle(485,535,515,490,545,535)
+		triangle(485,555,515,600,545,555)
+		triangle(565,515,610,545,565,575)
+		triangle(465,515,420,545,465,575)
+		
+		strokeWeight(0.5)
+		text("SPACE BAR",200,555)
+		
+		strokeWeight(0)
+		fill('cyan')
+		textSize(15)
+		text('"[Auroras] appeared not to belong to Earth but to space. Seemingly beyond human comprehension, they reached straight into the souls of those who witnessed them as the appearance of the angelic host or the holy spirit might do."',400,40,475)
+	
+		EXIT()
+	
+}// HOW TO PLAY
