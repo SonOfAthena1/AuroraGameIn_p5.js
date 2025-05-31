@@ -44,3 +44,34 @@ class sledDog{
 
 
 
+class sledshot{
+	constructor(x,y){
+		this.x = x
+		this.y = y
+		this.speed = 20
+	}
+	
+	render(size){
+		this.y -= this.speed
+		
+		strokeWeight(3*size)
+		stroke('rgb(181,117,0)')
+		line(this.x,this.y+30*size,this.x,this.y)
+		strokeWeight(0)
+		fill("rgb(41,41,41)")
+		triangle(this.x,this.y-15*size,this.x+7*size,this.y,this.x-7*size,this.y)
+		
+		fill('rgb(168,168,168)')
+		beginShape()
+		vertex(this.x,this.y+30*size)
+		vertex(this.x-5*size,this.y+40*size)
+		vertex(this.x-5*size,this.y+27.5*size)
+		
+		vertex(this.x,this.y+17.5*size)
+		
+		vertex(this.x+5*size,this.y+27.5*size)
+		vertex(this.x+5*size,this.y+40*size)
+		vertex(this.x,this.y+30*size)
+		endShape(CLOSE)
+	}//END RENDER
+}//END SHOT
