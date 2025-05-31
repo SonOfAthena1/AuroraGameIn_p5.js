@@ -1,0 +1,114 @@
+class enemy{
+	constructor(){
+		this.x = random(16,584);
+		this.xx = 0
+		this.y = random(16,244);
+		this.radius = 0;
+		this.xdirection = random(-1,1)
+		this.ydirection = random(-1,1)
+		this.xspeed = random(1,2)
+		this.yspeed = random(1,2)
+		this.shotTime = round(random(0,4))
+		this.shoty = []
+		this.shotx = []
+		this.shotFired = true
+		this.shoot = false
+	}
+	
+	render(size){
+		this.xx= this.x
+		
+		this.radius = 90*size
+		this.x=this.x+this.xspeed*this.xdirection
+		this.y=this.y+this.yspeed*this.ydirection
+		
+		if(this.x>585 || this.x<15){
+			this.xdirection=this.xdirection*-1
+		}
+		
+		if(this.y>245 || this.y<15){
+			this.ydirection=this.ydirection*-1
+		}
+		
+		strokeWeight(0)
+		fill('gray')
+		rect(this.x-30*size,this.y-40*size,15*size,90*size)
+		rect(this.x+30*size,this.y-40*size,15*size,90*size)
+		fill('silver')
+		beginShape()
+		vertex(this.x-42*size,this.y-3*size)
+		vertex(this.x-42*size,this.y-18*size)
+		vertex(this.x-5*size,this.y-65*size)
+		vertex(this.x+5*size,this.y-65*size)
+		vertex(this.x+42*size,this.y-18*size)
+		vertex(this.x+42*size,this.y-3*size)
+		endShape(CLOSE)
+		
+		fill('rgb(216,216,216)')
+		triangle(this.x-42*size,this.y-3*size,this.x,this.y-40*size,this.x+42*size,this.y-3*size)
+		
+		fill('rgb(73,73,73)')
+		rect(this.x,this.y+32*size,35*size,70*size)
+		
+		fill('rgb(55,55,55)')
+		rect(this.x-25*size,this.y+60*size,15*size,65*size)
+		rect(this.x+25*size,this.y+60*size,15*size,65*size)
+		
+		stroke('black')
+		strokeWeight(2*size)
+		for(let k=0;k<7;k++){
+			line(this.x-30*size,this.y+(90-k*10)*size,this.x-20*size,this.y+(90-k*10)*size)
+			line(this.x+30*size,this.y+(90-k*10)*size,this.x+20*size,this.y+(90-k*10)*size)
+		}
+		
+		fill('black')
+		strokeWeight(0)
+		circle(this.x,this.y+10*size,25*size)
+		circle(this.x,this.y+40*size,25*size)
+		
+		fill('rgb(162,162,162)')
+		rect(this.x,this.y-15*size,20*size,5*size)
+		fill('black')
+		rect(this.x-14*size,this.y-15*size,7.5*size,2.5*size)
+		rect(this.x+14*size,this.y-15*size,7.5*size,2.5*size)
+		
+		fill('rgb(129,129,129)')
+		rect(this.x,this.y+60*size,15*size,3.5*size)
+		fill('black')
+		rect(this.x-12*size,this.y+60*size,7*size,2.5*size)
+		rect(this.x+12*size,this.y+60*size,7*size,2.5*size)
+		rect(this.x,this.y+77*size,5*size,30*size)
+		rect(this.x,this.y+97*size,2.5*size,10*size)
+	}//END RENDER
+	
+	enemyshot(){
+		
+		if(this.shotFired===true){
+			this.shotx.push(this.x)
+			this.shoty.push(this.y-30)
+			this.shotFired=false
+		}
+		
+		this.shoty[this.shoty.length-1] += 8
+		
+		strokeWeight(0)
+		fill("black")
+		beginShape()
+		curveVertex(this.shotx[this.shotx.length-1],this.shoty[this.shoty.length-1]+30)
+		curveVertex(this.shotx[this.shotx.length-1]+5,this.shoty[this.shoty.length-1]+10)
+		curveVertex(this.shotx[this.shotx.length-1]-5,this.shoty[this.shoty.length-1]+10)
+		endShape(CLOSE)
+		
+		if(this.shoty[this.shoty.length-1]>650+150*this.shotTime){
+			this.shotFired=true
+		}
+		
+	}//END ENEMY SHOT
+	
+	shootEnemy(sx, sy) { //IF ENEMY IS SHOT
+    if (abs(sx - this.x) < this.radius && abs(sy - this.y) < this.radius) {
+			return true
+    }
+    return false
+  }
+}
