@@ -1,1 +1,35 @@
-
+class iceBlock{
+	constructor(){
+		this.x = random(20,680)
+		this.y = random(-1200,-50)
+		this.speed = 10
+		this.size = random(0.5,2)
+		this.color = random(0,2)
+		this.trans = round(random(10,100))
+		this.dif1 = random(-30,30)
+		this.dif2 = random(-30,30)
+		this.dif3 = random(-30,30)
+	}
+	
+	render(){
+		this.y+=this.speed
+		strokeWeight(0)
+		stroke(0)
+		if(this.color<=0.66){
+			fill(0,255,255,this.trans)
+		}
+		else{
+			fill(255-10*this.color,255-10*this.color,255-10*this.color)
+		}
+		beginShape()
+		vertex(this.x-50*this.size-(this.dif2*this.size),this.y-25*this.size-(this.dif1*this.size))
+		vertex(this.x-20*this.size-(this.dif2*this.size),this.y-35*this.size-(this.dif3*this.size))
+		vertex(this.x-5*this.size-(this.dif3*this.size),this.y-50*this.size-(this.dif1*this.size))
+		vertex(this.x+10*this.size+(this.dif1*this.size),this.y-30*this.size-(this.dif3*this.size))
+		vertex(this.x+30*this.size+(this.dif3*this.size),this.y-10*this.size-(this.dif2*this.size))
+		vertex(this.x+45*this.size+(this.dif2*this.size),this.y+15*this.size+(this.dif1*this.size))
+		vertex(this.x+25*this.size+(this.dif1*this.size),this.y+45*this.size+(this.dif3*this.size))
+		vertex(this.x-55*this.size-(this.dif3*this.size),this.y+20*this.size+(this.dif2*this.size))
+		endShape(CLOSE)
+	}
+} //END ICEBLOCK
