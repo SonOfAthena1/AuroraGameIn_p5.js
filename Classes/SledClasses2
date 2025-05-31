@@ -1,1 +1,46 @@
+class sledDog{
+	constructor(healthID){
+		this.x = 350
+		this.y = 350
+		this.size = 1
+		this.healthID = healthID;
+	}
+	
+	render(x,y,size){
+		
+		this.size = size
+		this.x = x
+		this.y = y
+		
+		push()
+		strokeWeight(0)
+		fill('rgb(73,73,73)')
+		rect(this.x,this.y-25/2*size,75*size,200*size)
+		
+		fill('rgb(114,114,114)')
+		rect(this.x,this.y+120*size,22*size,65*size)
+		fill('rgb(186,186,186)')
+		rect(this.x,this.y+140*size,22*size,25*size)
+		
+		fill('rgb(177,177,177)')
+		curve(this.x-15*size,this.y+250*size, this.x-13*size,this.y-112*size,this.x+13*size,this.y-112*size, this.x+15*size,this.y+250*size)
+		
+		fill('gray')
+		beginShape()
+		curveVertex(this.x-15*size,this.y-110*size)
+		curveVertex(this.x-35*size,this.y-90*size)
+		curveVertex(this.x-40*size,this.y-140*size)
+		endShape(CLOSE)
+		
+		beginShape()
+		curveVertex(this.x+15*size,this.y-110*size)
+		curveVertex(this.x+35*size,this.y-90*size)
+		curveVertex(this.x+40*size,this.y-140*size)
+		endShape(CLOSE)
+		pop()
+	}//END RENDER
+	
+}//END SLED_DOG
+
+
 
