@@ -1,0 +1,40 @@
+function Aurora(){
+	background(0);//colors background, in grayscale 0-255
+	fill(0)
+	stroke(250)
+	strokeWeight(2)
+	rect(width/2,height/2,width,height) //BACKGROUND
+	
+	for(i=0;i<starList.length;i++){
+		starList[i].render()
+	}
+	
+	x+=abs(sin(x2)/10)
+	x2+=0.005
+	
+	const from = color('rgba(0,255,255,0.49)');
+	const to = color('rgba(0,255,0,0.53)');
+	const to2 = color('rgba(255,0,0,0.55)')
+	
+	for(j=0;j<15;j++){
+		noFill();
+		stroke(lerpColor(from,to,0.06*j))
+		strokeWeight(20)
+		beginShape();
+		for(i=0;i<700;i += 1){
+			curveVertex((sin(x+i/75)*50+20*j)+100, i);
+		}
+		endShape();
+	}
+	for(j=0;j<15;j++){
+		noFill();
+		stroke(lerpColor(to,to2,0.06*j))
+		strokeWeight(20)
+		beginShape();
+		for(i=0;i<700;i += 1){
+			curveVertex((sin(x+i/75)*50+20*j)+400, i);
+		}
+		endShape();
+	}
+	
+}// AURORA
